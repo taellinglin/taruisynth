@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tauri App</title>
+    <script type="module" src="./scripts/main.js" defer></script>
+    <style>
+      .logo.vanilla:hover {
+        filter: drop-shadow(0 0 2em #ffe21c);
+      }
+    </style>
+    <style>
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 10px;
+      }
+      button {
+        padding: 15px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Welcome to Tauri!</h1>
+
+      <div class="row">
+        <a href="https://tauri.app" target="_blank">
+          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
+        </a>
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+          target="_blank"
+        >
+          <img
+            src="/assets/javascript.svg"
+            class="logo vanilla"
+            alt="JavaScript logo"
+          />
+        </a>
+      </div>
+
+      <p>Click on the Tauri logo to learn more about the framework</p>
+
+      <div class="row">
+        <div>
+          <input id="greet-input" placeholder="Enter a name..." />
+          <button id="greet-button" type="button">Greet</button>
+        </div>
+      </div>
+      <div class="more_buttons">
+        <button id="rf-button" type="button">Read File</button>
+        <button id="add-button" type="button">Addition</button>
+        <button id="mfjs-button" type="button">ModifyJS</button>
+      <div>
+
+      <p id="greet-msg"></p>
+      <p id="first-line"></p>
+      <p id="addition-line"></p>
+    </div>
+    <div class="grid-container">
+      <button onclick="playSample(1)">C4</button>
+      <button onclick="playSample(2)">C#4</button>
+      <button onclick="playSample(3)">D4</button>
+      <button onclick="playSample(4)">D#4</button>
+      <button onclick="playSample(5)">E4</button>
+      <button onclick="playSample(6)">F4</button>
+      <button onclick="playSample(7)">F#4</button>
+      <button onclick="playSample(8)">G4</button>
+      <button onclick="playSample(9)">G#4</button>
+      <button onclick="playSample(10)">A4</button>
+      <button onclick="playSample(11)">A#4</button>
+      <button onclick="playSample(12)">B4</button>
+      <button onclick="playSample(13)">C5</button>
+      <button onclick="playSample(14)">C#5</button>
+      <button onclick="playSample(15)">D5</button>
+      <button onclick="playSample(16)">D#5</button>
+      
+    </div>
+    <script>
+      function playSample(number) {
+        const audio = new Audio(`/assets/${number}.wav`);
+        audio.play();
+      }
+    
+      function getKeySampleNumber(key) {
+        const keyMapping = {
+          'q': 1,
+          'w': 2,
+          'e': 3,
+          'r': 4,
+          'p': 5,
+          'o': 6,
+          'i': 7,
+          'u': 8,
+          'a': 9,
+          's': 10,
+          'd': 11,
+          'f': 12,
+          'l': 13,
+          'k': 14,
+          'j': 15,
+          'h': 16
+        };
+    
+        return keyMapping[key.toLowerCase()];
+      }
+    
+      document.addEventListener('keydown', (event) => {
+        const sampleNumber = getKeySampleNumber(event.key);
+    
+        if (sampleNumber) {
+          playSample(sampleNumber);
+        }
+      });
+    </script>
+    
+    
+  </body>
+</html>

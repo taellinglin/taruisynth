@@ -1,0 +1,7 @@
+install pnpm: > npm install pnpm -g && pnpm setup
+install vite: > npm install vite --save
+configure vite: We should just copy the one Simon gave us
+install js packages in package.json: > pnpm install 
+install new js packages with pnpm: > pnpm install """" --save
+set before dev command in .conf.json: > "pnpm dev"
+launch: > pnpm tauri dev
