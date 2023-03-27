@@ -26,6 +26,7 @@
 
   <body>
     <div class="container">
+      <!--
       <h1>Welcome to Tauri!</h1>
 
       <div class="row">
@@ -62,6 +63,7 @@
       <p id="first-line"></p>
       <p id="addition-line"></p>
     </div>
+    -->
     <div class="grid-container">
       <button onclick="playSample(1)">C4</button>
       <button onclick="playSample(2)">C#4</button>
@@ -79,6 +81,22 @@
       <button onclick="playSample(14)">C#5</button>
       <button onclick="playSample(15)">D5</button>
       <button onclick="playSample(16)">D#5</button>
+      <button onclick="playSample(17)">Kick</button>
+      <button onclick="playSample(18)">SideStick</button>
+      <button onclick="playSample(19)">Snare 1</button>
+      <button onclick="playSample(20)">Snare2</button>
+      <button onclick="playSample(21)">Closed Hat</button>
+      <button onclick="playSample(22)">Cowbell</button>
+      <button onclick="playSample(23)">Pedal</button>
+      <button onclick="playSample(24)">Low</button>
+      <button onclick="playSample(25)">Open</button>
+      <button onclick="playSample(26)">Mid</button>
+      <button onclick="playSample(27)">High</button>
+      <button onclick="playSample(28)">Crash</button>
+      <button onclick="playSample(29)">Lite</button>
+      <button onclick="playSample(30)">Ride</button>
+      <button onclick="playSample(31)">Tamb</button>
+      <button onclick="playSample(32)">Light Crash</button>
       
     </div>
     <script>
@@ -89,35 +107,60 @@
     
       function getKeySampleNumber(key) {
         const keyMapping = {
-          'q': 1,
-          'w': 2,
-          'e': 3,
-          'r': 4,
-          'p': 5,
-          'o': 6,
-          'i': 7,
-          'u': 8,
-          'a': 9,
-          's': 10,
-          'd': 11,
-          'f': 12,
-          'l': 13,
-          'k': 14,
-          'j': 15,
-          'h': 16
+          '1': 1,
+          '2': 2,
+          '3': 3,
+          '4': 4,
+          '7': 5,
+          '8': 6,
+          '9': 7,
+          '0': 8,
+          'q': 9,
+          'w': 10,
+          'e': 11,
+          'r': 12,
+          't': 13,
+          'y': 14,
+          'u': 15,
+          'i': 16,
+          'a': 17,
+          's': 18,
+          'd': 19,
+          'f': 20,
+          'g': 21,
+          'h': 22,
+          'j': 23,
+          'k': 24,
+          'z': 25,
+          'x': 26,
+          'c': 27,
+          'v': 28,
+          'b': 29,
+          'n': 30,
+          'm': 31,
+          ',': 32,
         };
     
-        return keyMapping[key.toLowerCase()];
+        return keyMapping[key];
       }
     
-      document.addEventListener('keydown', (event) => {
-        const sampleNumber = getKeySampleNumber(event.key);
+      let pressedKeys = new Set();
     
-        if (sampleNumber) {
-          playSample(sampleNumber);
+      document.addEventListener('keydown', (event) => {
+        if (!pressedKeys.has(event.key)) {
+          pressedKeys.add(event.key);
+          const sampleNumber = getKeySampleNumber(event.key);
+          if (sampleNumber) {
+            playSample(sampleNumber);
+          }
         }
       });
+    
+      document.addEventListener('keyup', (event) => {
+        pressedKeys.delete(event.key);
+      });
     </script>
+    
     
     
   </body>
